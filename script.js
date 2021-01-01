@@ -1,6 +1,7 @@
 const stars = [];
-let speed = 0;
 const numberOfStars = 800;
+
+let speed = 0;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -11,8 +12,10 @@ function setup() {
 }
 
 function draw() {
+  // Reset background
   background(0);
-  console.log(stars.length);
+
+  // Initial speed
   speed = map(mouseX, 0, width, 5, 100);
 
   // Translate the origin to the center of the window
@@ -40,8 +43,8 @@ class Star {
     // Move the star down on the Z axis (Push away from screen)
     this.z = this.z - speed;
 
+    // If the star is out, reset a new position
     if (this.z < 1) {
-      // If the star is out, reset a new position
       this.x = random(-width, width);
       this.y = random(-height, height);
 
@@ -56,7 +59,7 @@ class Star {
     const sy = map(this.y / this.z, 0, 1, 0, height);
 
     // Map the ellipse size to the Z values for the size
-    const randomSize = map(this.z, 0, width, 10, 0);
+    const randomSize = map(this.z, 0, width, 7, 0);
 
     // Ellipse config
     fill(255);
